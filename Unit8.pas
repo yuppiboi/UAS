@@ -1,4 +1,4 @@
-unit Unit4;
+unit Unit8;
 
 interface
 
@@ -8,7 +8,7 @@ uses
   ZAbstractDataset, ZDataset, ZAbstractConnection, ZConnection;
 
 type
-  TForm4 = class(TForm)
+  TForm8 = class(TForm)
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -17,7 +17,6 @@ type
     Label6: TLabel;
     Label7: TLabel;
     Label8: TLabel;
-    Label9: TLabel;
     Edit1: TEdit;
     Edit2: TEdit;
     Edit3: TEdit;
@@ -25,8 +24,6 @@ type
     Edit5: TEdit;
     Edit6: TEdit;
     cmb1: TComboBox;
-    cmb2: TComboBox;
-    cmb3: TComboBox;
     ZConnection1: TZConnection;
     ZQuery1: TZQuery;
     DataSource1: TDataSource;
@@ -35,11 +32,12 @@ type
     Button3: TButton;
     Button4: TButton;
     DBGrid1: TDBGrid;
+    cmb2: TComboBox;
     procedure Button1Click(Sender: TObject);
-    procedure DBGrid1CellClick(Column: TColumn);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
+    procedure DBGrid1CellClick(Column: TColumn);
   private
     { Private declarations }
   public
@@ -47,26 +45,62 @@ type
   end;
 
 var
-  Form4: TForm4;
-  Id:string;
+  Form8: TForm8;
+  id:string;
 
 implementation
 
 {$R *.dfm}
 
-procedure TForm4.Button1Click(Sender: TObject);
+procedure TForm8.Button1Click(Sender: TObject);
 begin
   ZQuery1.SQL.Clear;
-  ZQuery1.SQL.Add('insert into tb_ortu values(null, "'+Edit1.Text+'", "'+Edit2.Text+'", "'+cmb1.Text+'", "'+Edit3.Text+'", "'+Edit4.Text+'", "'+Edit5.Text+'", "'+Edit6.Text+'", "'+cmb2.Text+'", "'+cmb3.Text+'")');
+  ZQuery1.SQL.Add('insert into tb_walikelas values(null, "'+Edit1.Text+'", "'+Edit2.Text+'", "'+cmb1.Text+'", "'+Edit3.Text+'", "'+Edit4.Text+'", "'+Edit5.Text+'", "'+Edit6.Text+'", "'+cmb2.Text+'")');
   ZQuery1.ExecSQL;
 
   ZQuery1.SQL.Clear;
-  ZQuery1.SQL.Add('select * from tb_ortu');
+  ZQuery1.SQL.Add('select * from tb_walikelas');
   ZQuery1.Open;
   Showmessage('DATA BERHASIL DI SIMPAN..');
 end;
 
-procedure TForm4.DBGrid1CellClick(Column: TColumn);
+procedure TForm8.Button2Click(Sender: TObject);
+begin
+  ZQuery1.SQL.Clear;
+  ZQuery1.SQL.Add('update tb_walikelas set nip="'+Edit1.Text+'", nama="'+Edit2.Text+'", jenis_kelamin="'+cmb1.Text+'", alamat="'+Edit3.Text+'", telp="'+Edit4.Text+'", matpel="'+Edit5.Text+'", pendidikan="'+Edit6.Text+'", status="'+cmb2.Text+'" where id="'+id+'"');
+  ZQuery1.ExecSQL;
+
+  ZQuery1.SQL.Clear;
+  ZQuery1.SQL.Add('select * from tb_walikelas');
+  ZQuery1.Open;
+  Showmessage('DATA BERHASIL DI EDIT..');
+end;
+
+procedure TForm8.Button3Click(Sender: TObject);
+begin
+  ZQuery1.SQL.Clear;
+  ZQuery1.SQL.Add('delete from tb_walikelas where id="'+id+'"');
+  ZQuery1.ExecSQL;
+
+  ZQuery1.SQL.Clear;
+  ZQuery1.SQL.Add('select * from tb_walikelas');
+  ZQuery1.Open;
+  Showmessage('DATA BERHASIL DI HAPUS..');
+end;
+
+procedure TForm8.Button4Click(Sender: TObject);
+begin
+Edit1.Clear;
+Edit2.Clear;
+cmb1.Clear;
+Edit3.Clear;
+Edit4.Clear;
+Edit5.Clear;
+Edit6.Clear;
+cmb2.Clear;
+end;
+
+procedure TForm8.DBGrid1CellClick(Column: TColumn);
 begin
   id:=ZQuery1.Fields[0].AsString;
   Edit1.Text:=ZQuery1.Fields[1].AsString;
@@ -77,44 +111,6 @@ begin
   Edit5.Text:=ZQuery1.Fields[6].AsString;
   Edit6.Text:=ZQuery1.Fields[7].AsString;
   cmb2.Text:=ZQuery1.Fields[8].AsString;
-  cmb3.Text:=ZQuery1.Fields[9].AsString;
-end;
-
-procedure TForm4.Button2Click(Sender: TObject);
-begin
-  ZQuery1.SQL.Clear;
-  ZQuery1.SQL.Add('update tb_ortu set nik="'+Edit1.Text+'", nama="'+Edit2.Text+'", pendidikan="'+cmb1.Text+'", pekerjaan="'+Edit3.Text+'", telp="'+Edit4.Text+'", alamat="'+Edit5.Text+'", agama="'+Edit6.Text+'", jenis_kelamin="'+cmb2.Text+'", status="'+cmb3.Text+'" where ortu_id="'+id+'"');
-  ZQuery1.ExecSQL;
-
-  ZQuery1.SQL.Clear;
-  ZQuery1.SQL.Add('select * from tb_ortu');
-  ZQuery1.Open;
-  Showmessage('DATA BERHASIL DI EDIT..');
-end;
-
-procedure TForm4.Button3Click(Sender: TObject);
-begin
-  ZQuery1.SQL.Clear;
-  ZQuery1.SQL.Add('delete from tb_ortu where ortu_id="'+id+'"');
-  ZQuery1.ExecSQL;
-
-  ZQuery1.SQL.Clear;
-  ZQuery1.SQL.Add('select * from tb_ortu');
-  ZQuery1.Open;
-  Showmessage('DATA BERHASIL DI HAPUS..');
-end;
-
-procedure TForm4.Button4Click(Sender: TObject);
-begin
-Edit1.Clear;
-Edit2.Clear;
-cmb1.Clear;
-Edit3.Clear;
-Edit4.Clear;
-Edit5.Clear;
-Edit6.Clear;
-cmb2.Clear;
-cmb3.Clear;
 end;
 
 end.

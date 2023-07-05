@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 279
-  Top = 211
+  Left = 214
+  Top = 172
   Width = 1386
   Height = 543
   Caption = 'tb_siswa'
@@ -203,21 +203,13 @@ object Form1: TForm1
     TabOrder = 11
     OnClick = Button5Click
   end
-  object Button6: TButton
-    Left = 296
-    Top = 168
-    Width = 75
-    Height = 25
-    Caption = 'Laporan'
-    TabOrder = 12
-  end
   object DBGrid1: TDBGrid
     Left = 296
     Top = 208
     Width = 1073
     Height = 225
     DataSource = DataSource1
-    TabOrder = 13
+    TabOrder = 12
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
@@ -232,7 +224,7 @@ object Form1: TForm1
     Height = 21
     Date = 45103.783582719910000000
     Time = 45103.783582719910000000
-    TabOrder = 14
+    TabOrder = 13
   end
   object cmb1: TComboBox
     Left = 136
@@ -240,7 +232,7 @@ object Form1: TForm1
     Width = 121
     Height = 21
     ItemHeight = 13
-    TabOrder = 15
+    TabOrder = 14
     Items.Strings = (
       'Laki-Laki'
       'Perempuan')
@@ -251,7 +243,7 @@ object Form1: TForm1
     Width = 121
     Height = 21
     ItemHeight = 13
-    TabOrder = 16
+    TabOrder = 15
     Items.Strings = (
       'X'
       'XI'
@@ -263,7 +255,7 @@ object Form1: TForm1
     Width = 121
     Height = 21
     ItemHeight = 13
-    TabOrder = 17
+    TabOrder = 16
     Items.Strings = (
       'Bahasa'
       'IPA'
@@ -275,7 +267,7 @@ object Form1: TForm1
     Width = 121
     Height = 21
     ItemHeight = 13
-    TabOrder = 18
+    TabOrder = 17
     Items.Strings = (
       'Aktif'
       'Tidak Aktif')
@@ -285,7 +277,7 @@ object Form1: TForm1
     Top = 136
     Width = 121
     Height = 21
-    TabOrder = 19
+    TabOrder = 18
   end
   object ZConnection1: TZConnection
     ControlsCodePage = cGET_ACP

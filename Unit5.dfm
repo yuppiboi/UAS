@@ -1,6 +1,6 @@
 object Form5: TForm5
-  Left = 371
-  Top = 229
+  Left = 219
+  Top = 130
   Width = 928
   Height = 480
   Caption = 'tb_poin'
@@ -109,21 +109,13 @@ object Form5: TForm5
     TabOrder = 7
     OnClick = Button4Click
   end
-  object Button5: TButton
-    Left = 368
-    Top = 112
-    Width = 75
-    Height = 25
-    Caption = 'Laporan'
-    TabOrder = 8
-  end
   object DBGrid1: TDBGrid
     Left = 16
     Top = 152
     Width = 449
     Height = 233
     DataSource = DataSource1
-    TabOrder = 9
+    TabOrder = 8
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
@@ -147,6 +139,7 @@ object Form5: TForm5
   end
   object ZQuery1: TZQuery
     Connection = ZConnection1
+    Active = True
     SQL.Strings = (
       'select * from tb_poin')
     Params = <>
